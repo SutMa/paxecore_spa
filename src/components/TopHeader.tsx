@@ -1,5 +1,16 @@
-import { Layout, Button, Typography, Switch, theme as antdTheme } from "antd";
-import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
+import {
+	Layout,
+	Button,
+	Typography,
+	Segmented,
+	theme as antdTheme,
+} from "antd";
+import {
+	MenuUnfoldOutlined,
+	MenuFoldOutlined,
+	SunOutlined,
+	MoonOutlined,
+} from "@ant-design/icons";
 import { User } from "lucide-react";
 import { useAuthStore } from "../stores/authStore";
 import { appTheme } from "../theme";
@@ -45,13 +56,15 @@ export default function TopHeader({
 					{tenantName ? `Tenant: ${tenantName}` : "No tenant loaded"}
 				</Typography.Text>
 			</div>
-			<div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-				<Switch
-					checked={mode === "dark"}
-					onChange={(checked) => setMode(checked ? "dark" : "light")}
-					checkedChildren="Dark"
-					unCheckedChildren="Light"
-					style={{ marginRight: 10 }}
+			<div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+				<Segmented
+					value={mode}
+					onChange={(val) => setMode(val as "light" | "dark")}
+					options={[
+						{ value: "light", icon: <SunOutlined /> },
+						{ value: "dark", icon: <MoonOutlined /> },
+					]}
+					size="small"
 				/>
 				<Button
 					type="text"

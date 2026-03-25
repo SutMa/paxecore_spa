@@ -5,6 +5,7 @@ import {
 	SettingOutlined,
 	BarChartOutlined,
 } from "@ant-design/icons";
+import { useNavigate, useLocation } from "react-router-dom";
 import { appTheme } from "../theme";
 import PaxecoreIcon from "./PaxecoreIcon";
 
@@ -17,13 +18,15 @@ export default function Sidebar({
 	navOpen: boolean;
 	mode: "light" | "dark";
 }) {
+	const navigate = useNavigate();
+	const location = useLocation();
 	const themeValues = appTheme[mode];
 
 	const navItems = [
-		{ key: "overview", icon: <HomeOutlined />, label: "Overview" },
-		{ key: "members", icon: <TeamOutlined />, label: "Members" },
-		{ key: "settings", icon: <SettingOutlined />, label: "Settings" },
-		{ key: "usage", icon: <BarChartOutlined />, label: "Usage" },
+		{ key: "/", icon: <HomeOutlined />, label: "Overview" },
+		{ key: "/members", icon: <TeamOutlined />, label: "Members" },
+		{ key: "/settings", icon: <SettingOutlined />, label: "Settings" },
+		{ key: "/usage", icon: <BarChartOutlined />, label: "Usage" },
 	];
 
 	return (
@@ -31,6 +34,8 @@ export default function Sidebar({
 			collapsible
 			collapsed={!navOpen}
 			trigger={null}
+			width={260}
+			collapsedWidth={80}
 			style={{
 				background: themeValues.colors.surface,
 				color: themeValues.colors.on_surface,
@@ -44,7 +49,7 @@ export default function Sidebar({
 			<div
 				style={{
 					height: 64,
-					margin: 16,
+					margin: "0 16px",
 					color: themeValues.colors.on_surface,
 					fontWeight: "bold",
 					textAlign: "center",
@@ -53,7 +58,6 @@ export default function Sidebar({
 					justifyContent: "center",
 					gap: 8,
 					overflow: "hidden",
-					// No transition
 				}}
 			>
 				<PaxecoreIcon />
@@ -81,8 +85,9 @@ export default function Sidebar({
 			<Menu
 				theme={themeValues.colors.background === "#ffffff" ? "light" : "dark"}
 				mode="inline"
-				defaultSelectedKeys={["overview"]}
+				selectedKeys={[location.pathname]}
 				items={navItems}
+				onClick={({ key }) => navigate(key)}
 				style={{
 					background: "transparent",
 					border: "none",

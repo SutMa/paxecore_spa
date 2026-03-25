@@ -12,17 +12,12 @@ import { queryClient } from "./lib/queryClient";
 import { appTheme, getAntdTokens } from "./theme";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
+import MainLayout from "./components/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import { useSession } from "./hooks/useSession";
 import "./App.css";
 
-function AuthenticatedApp({
-	mode,
-	setMode,
-}: {
-	mode: "light" | "dark";
-	setMode: (value: "light" | "dark") => void;
-}) {
+function SessionGate({ children }: { children: React.ReactNode }) {
 	const { isLoading, isError } = useSession();
 
 	if (isLoading)
@@ -34,7 +29,7 @@ function AuthenticatedApp({
 			</div>
 		);
 
-	return <Dashboard mode={mode} setMode={setMode} />;
+	return <>{children}</>;
 }
 
 function AppRoutes({
@@ -50,18 +45,25 @@ function AppRoutes({
 				<Route path="/sign-in/*" element={<SignInPage />} />
 				<Route path="/sign-up/*" element={<SignUpPage />} />
 				<Route
-					path="/*"
 					element={
 						<>
 							<SignedIn>
-								<AuthenticatedApp mode={mode} setMode={setMode} />
+								<SessionGate>
+									<MainLayout mode={mode} setMode={setMode} />
+								</SessionGate>
 							</SignedIn>
 							<SignedOut>
 								<RedirectToSignIn />
 							</SignedOut>
 						</>
 					}
-				/>
+				>
+					<Route index element={<Dashboard />} />
+
+					<Route path="members" element={<Dashboard />} />
+					<Route path="settings" element={<Dashboard />} />
+					<Route path="usage" element={<Dashboard />} />
+				</Route>
 			</Routes>
 		</BrowserRouter>
 	);

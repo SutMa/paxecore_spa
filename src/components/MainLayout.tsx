@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import { Layout, theme as antdTheme } from "antd";
 import Sidebar from "./Sidebar";
 import TopHeader from "./TopHeader";
@@ -6,18 +7,13 @@ import TopHeader from "./TopHeader";
 const { Content } = Layout;
 
 export default function MainLayout({
-	children,
-	navOpen,
-	setNavOpen,
 	mode,
 	setMode,
 }: {
-	children: ReactNode;
-	navOpen: boolean;
-	setNavOpen: (value: boolean) => void;
 	mode: "light" | "dark";
 	setMode: (value: "light" | "dark") => void;
 }) {
+	const [navOpen, setNavOpen] = useState(true);
 	const { token } = antdTheme.useToken();
 
 	return (
@@ -48,7 +44,7 @@ export default function MainLayout({
 						boxShadow: "0 20px 40px rgba(0, 35, 75, 0.06)",
 					}}
 				>
-					{children}
+					<Outlet />
 				</Content>
 			</Layout>
 		</Layout>

@@ -86,6 +86,38 @@ body {
 	border-top: 1px solid var(--bg-300) !important;
 }
 
+.ant-menu-inline,
+.ant-menu-inline-collapsed {
+	transition: none !important;
+}
+
+.ant-menu-item {
+	transition:
+		background 0.2s ease,
+		color 0.2s ease,
+		padding 0.3s ease !important;
+	overflow: hidden !important;
+}
+
+.ant-menu-item .ant-menu-title-content {
+	transition:
+		opacity 0.2s ease,
+		width 0.3s ease !important;
+	overflow: hidden !important;
+	white-space: nowrap !important;
+}
+
+.ant-menu-inline-collapsed .ant-menu-item {
+	padding-inline: calc(50% - 8px) !important;
+	text-align: center !important;
+}
+
+.ant-menu-inline-collapsed .ant-menu-title-content {
+	opacity: 0 !important;
+	width: 0 !important;
+	display: inline-block !important;
+}
+
 .no-line * {
 	border: none !important;
 }
