@@ -53,7 +53,7 @@ export default function TopHeader({
 				/>
 
 				<Typography.Text style={{ color: themeValues.colors.on_surface }}>
-					{tenantName ? `Tenant: ${tenantName}` : "No tenant loaded"}
+					{tenantName ? `${tenantName}` : "No tenant loaded"}
 				</Typography.Text>
 			</div>
 			<div style={{ display: "flex", alignItems: "center", gap: 12 }}>

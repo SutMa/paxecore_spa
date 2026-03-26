@@ -8,6 +8,12 @@ import {
 import { useNavigate, useLocation } from "react-router-dom";
 import { appTheme } from "../theme";
 import PaxecoreIcon from "./PaxecoreIcon";
+import { LayoutDashboard } from "lucide-react";
+import { Users } from "lucide-react";
+import { FolderOpen } from "lucide-react";
+import { Route } from "lucide-react";
+import { Send } from "lucide-react";
+import { Focus } from "lucide-react";
 
 const { Sider } = Layout;
 
@@ -23,10 +29,11 @@ export default function Sidebar({
 	const themeValues = appTheme[mode];
 
 	const navItems = [
-		{ key: "/", icon: <HomeOutlined />, label: "Overview" },
-		{ key: "/members", icon: <TeamOutlined />, label: "Members" },
-		{ key: "/settings", icon: <SettingOutlined />, label: "Settings" },
-		{ key: "/usage", icon: <BarChartOutlined />, label: "Usage" },
+		{ key: "/", icon: <LayoutDashboard size={22} />, label: "Dashboard" },
+		{ key: "/upload", icon: <Focus size={22} />, label: "Upload" },
+		{ key: "/explorer", icon: <FolderOpen size={22} />, label: "Explorer" },
+		{ key: "/directory", icon: <Users size={22} />, label: "Directory" },
+		{ key: "/routing", icon: <Send size={22} />, label: "Routing" },
 	];
 
 	return (

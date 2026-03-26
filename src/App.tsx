@@ -16,9 +16,13 @@ import MainLayout from "./components/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import { useSession } from "./hooks/useSession";
 import "./App.css";
+import { useAuth } from "@clerk/clerk-react";
+import { attachApiHeaders } from "./lib/api";
+import Directory from "./pages/Directory";
 
 function SessionGate({ children }: { children: React.ReactNode }) {
-	const { isLoading, isError } = useSession();
+	const { isLoading, isError, data } = useSession();
+	const { getToken } = useAuth();
 
 	if (isLoading)
 		return <div className="fade-text">Setting up your workspace...</div>;
@@ -28,6 +32,10 @@ function SessionGate({ children }: { children: React.ReactNode }) {
 				Account setup incomplete. Contact support.
 			</div>
 		);
+
+	if (data?.tenantId) {
+		attachApiHeaders(data.tenantId, getToken);
+	}
 
 	return <>{children}</>;
 }
@@ -60,9 +68,10 @@ function AppRoutes({
 				>
 					<Route index element={<Dashboard />} />
 
-					<Route path="members" element={<Dashboard />} />
-					<Route path="settings" element={<Dashboard />} />
-					<Route path="usage" element={<Dashboard />} />
+					<Route path="directory" element={<Directory />} />
+					<Route path="upload" element={<Dashboard />} />
+					<Route path="explorer" element={<Dashboard />} />
+					<Route path="routing" element={<Dashboard />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
@@ -94,6 +103,7 @@ export default function App() {
 						components: {
 							Typography: {
 								fontFamily: typographyFont,
+								titleMarginBottom: 0,
 							},
 						},
 					}}

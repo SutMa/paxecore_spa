@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "@clerk/clerk-react";
 import { useEffect } from "react";
-import { attachApiHeaders } from "../lib/api";
 import { useAuthStore } from "../stores/authStore";
 
 async function fetchSession(getToken: () => Promise<string | null>) {
@@ -40,10 +39,10 @@ export function useSession() {
 
 	useEffect(() => {
 		if (query.data) {
+			console.log("Session data:", query.data);
 			setSession(query.data);
-			attachApiHeaders(query.data.tenantId, getToken);
 		}
-	}, [query.data, getToken, setSession]);
+	}, [query.data, setSession]);
 
 	return query;
 }
