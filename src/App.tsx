@@ -81,13 +81,15 @@ function AppRoutes({
 export default function App() {
 	const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 	const [mode, setMode] = useState<"light" | "dark">(() => {
-		if (typeof window !== "undefined" && window.matchMedia) {
-			return window.matchMedia("(prefers-color-scheme: dark)").matches
-				? "dark"
-				: "light";
-		}
+		const saved = localStorage.getItem("theme");
+		if (saved === "light" || saved === "dark") return saved;
 		return "light";
 	});
+
+	const handleSetMode = (value: "light" | "dark") => {
+		localStorage.setItem("theme", value);
+		setMode(value);
+	};
 
 	const tokens = useMemo(() => getAntdTokens(mode), [mode]);
 	const typographyFont = appTheme[mode].fonts.body;
@@ -108,7 +110,7 @@ export default function App() {
 						},
 					}}
 				>
-					<AppRoutes mode={mode} setMode={setMode} />
+					<AppRoutes mode={mode} setMode={handleSetMode} />
 				</ConfigProvider>
 			</QueryClientProvider>
 		</ClerkProvider>

@@ -25,8 +25,8 @@ export const appTheme = {
 			secondary: "#6c757d",
 			tertiary: "#28a745",
 			neutral: "#adb5bd",
-			background: "#212529",
-			surface: "#252b2f",
+			background: "#000000",
+			surface: "#0a0a0a",
 			on_background: "#f8f9fa",
 			on_surface: "#f8f9fa",
 			on_primary: "#ffffff",
@@ -57,19 +57,23 @@ export const getAntdTokens = (mode: "light" | "dark") => {
 		colorSecondary: themeMode.colors.secondary,
 		colorSuccess: themeMode.colors.tertiary,
 		colorText: themeMode.colors.on_background,
-		colorTextSecondary: themeMode.colors.neutral,
+		colorTextSecondary: isDark ? "#ffffff" : themeMode.colors.neutral,
+		colorTextDescription: isDark ? "#ffffff" : themeMode.colors.neutral,
+		colorTextLabel: isDark ? "#ffffff" : themeMode.colors.neutral,
+		colorTextTertiary: isDark ? "#ffffff" : themeMode.colors.neutral,
+		colorTextQuaternary: isDark ? "#ffffff" : themeMode.colors.neutral,
 		colorBgBase: themeMode.colors.background,
 		colorBgLayout: themeMode.colors.background,
 		colorBgContainer: themeMode.colors.surface,
 		colorBgElevated: themeMode.colors.surface,
 		colorBorder: "rgba(0,0,0,0)",
 		colorBorderSecondary: isDark
-			? "rgba(255, 255, 255, 0.08)"
+			? "rgba(255, 255, 255, 0.25)"
 			: "rgba(204, 203, 200, 0.8)", // surface_border at softer opacity
 		colorError: "#F43F5E",
 		colorWarning: "#F59E0B",
 		fontFamily: themeMode.fonts.body,
-		borderRadius: 8,
+		borderRadius: 0,
 		lineHeight: 1.5,
 		boxShadow: isDark
 			? "0 8px 24px rgba(0, 0, 0, 0.5)"

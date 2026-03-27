@@ -36,12 +36,9 @@ export default function MainLayout({
 
 				<Content
 					style={{
-						margin: "24px 16px",
-						padding: 24,
-						background: token.colorBgContainer,
+						margin: 8,
+						padding: 16,
 						color: token.colorText,
-						borderRadius: 12,
-						boxShadow: "0 20px 40px rgba(0, 35, 75, 0.06)",
 					}}
 				>
 					<Outlet />

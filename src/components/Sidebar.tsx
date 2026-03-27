@@ -1,19 +1,16 @@
 import { Layout, Menu } from "antd";
-import {
-	HomeOutlined,
-	TeamOutlined,
-	SettingOutlined,
-	BarChartOutlined,
-} from "@ant-design/icons";
+
 import { useNavigate, useLocation } from "react-router-dom";
 import { appTheme } from "../theme";
 import PaxecoreIcon from "./PaxecoreIcon";
 import { LayoutDashboard } from "lucide-react";
 import { Users } from "lucide-react";
 import { FolderOpen } from "lucide-react";
-import { Route } from "lucide-react";
 import { Send } from "lucide-react";
 import { Focus } from "lucide-react";
+import { ClipboardList } from "lucide-react";
+import { DollarSign } from "lucide-react";
+import { HandCoins } from "lucide-react";
 
 const { Sider } = Layout;
 
@@ -34,6 +31,9 @@ export default function Sidebar({
 		{ key: "/explorer", icon: <FolderOpen size={22} />, label: "Explorer" },
 		{ key: "/directory", icon: <Users size={22} />, label: "Directory" },
 		{ key: "/routing", icon: <Send size={22} />, label: "Routing" },
+		{ key: "/audit", icon: <ClipboardList size={22} />, label: "Audit" },
+		{ key: "/pay", icon: <DollarSign size={22} />, label: "APCore" },
+		{ key: "/collect", icon: <HandCoins size={22} />, label: "ARCore" },
 	];
 
 	return (
@@ -43,6 +43,7 @@ export default function Sidebar({
 			trigger={null}
 			width={260}
 			collapsedWidth={80}
+			data-theme={mode}
 			style={{
 				background: themeValues.colors.surface,
 				color: themeValues.colors.on_surface,

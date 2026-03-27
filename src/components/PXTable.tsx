@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Table, Pagination } from "antd";
+import { Table, Pagination, theme as antdTheme } from "antd";
 import { useQuery } from "@tanstack/react-query";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import api from "../lib/api";
@@ -44,6 +44,7 @@ export default function PXTable<T extends object>({
 }: PXTableProps<T>) {
 	const [page, setPage] = useState(1);
 	const [pageSize, setPageSize] = useState(defaultPageSize);
+	const { token } = antdTheme.useToken();
 
 	const { data, isLoading } = useQuery<PaginatedResponse<T>>({
 		queryKey: [queryKey, page, pageSize, body],
@@ -63,8 +64,8 @@ export default function PXTable<T extends object>({
 				display: "flex",
 				flexDirection: "column",
 				height: "100%",
-				border: "1px solid #e8e8e8",
-				borderRadius: 8,
+				border: `1px solid ${token.colorBorderSecondary}`,
+				borderRadius: 0,
 				overflow: "hidden",
 			}}
 		>

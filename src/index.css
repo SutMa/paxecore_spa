@@ -127,14 +127,14 @@ body {
 }
 
 .ant-menu-item-selected {
-	background-color: var(--primary-100) !important;
-	color: #ffffff !important;
+	background-color: var(--primary-300) !important;
+	color: var(--primary-200) !important;
 	border-radius: 0 !important;
 }
 
 .ant-menu-item-selected:hover {
-	background-color: var(--primary-200) !important;
-	color: #ffffff !important;
+	background-color: var(--primary-300) !important;
+	color: var(--primary-100) !important;
 	border-radius: 0 !important;
 }
 
@@ -143,30 +143,32 @@ body {
 .ant-menu-item-selected .ant-menu-item-icon,
 .ant-menu-item-selected .ant-menu-title-content > span,
 .ant-menu-item-selected .ant-menu-item-link {
-	color: #ffffff !important;
+	color: var(--primary-200) !important;
 }
 
 .ant-menu-item:hover {
 	border-radius: 0 !important;
 }
 
-@media (prefers-color-scheme: dark) {
-	.ant-menu-item-selected {
-		background-color: var(--primary-100) !important;
-		color: #ffffff !important;
-	}
-	.ant-menu-item-selected:hover {
-		background-color: var(--primary-200) !important;
-		color: #ffffff !important;
-	}
-	.ant-menu-item-selected .ant-menu-title-content,
-	.ant-menu-item-selected .anticon,
-	.ant-menu-item-selected .ant-menu-item-icon,
-	.ant-menu-item-selected .ant-menu-title-content > span,
-	.ant-menu-item-selected .ant-menu-item-link {
-		color: #ffffff !important;
-	}
+[data-theme="dark"] .ant-menu-item-selected {
+	background-color: var(--primary-100) !important;
+	color: #ffffff !important;
+}
 
+[data-theme="dark"] .ant-menu-item-selected:hover {
+	background-color: var(--primary-200) !important;
+	color: #ffffff !important;
+}
+
+[data-theme="dark"] .ant-menu-item-selected .ant-menu-title-content,
+[data-theme="dark"] .ant-menu-item-selected .anticon,
+[data-theme="dark"] .ant-menu-item-selected .ant-menu-item-icon,
+[data-theme="dark"] .ant-menu-item-selected .ant-menu-title-content > span,
+[data-theme="dark"] .ant-menu-item-selected .ant-menu-item-link {
+	color: #ffffff !important;
+}
+
+@media (prefers-color-scheme: dark) {
 	:root {
 		--primary-100: #007bff;
 		--primary-200: #0056b3;
