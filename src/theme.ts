@@ -25,7 +25,7 @@ export const appTheme = {
 			secondary: "#6c757d",
 			tertiary: "#28a745",
 			neutral: "#adb5bd",
-			background: "#000000",
+			background: "#141414",
 			surface: "#0a0a0a",
 			on_background: "#f8f9fa",
 			on_surface: "#f8f9fa",
@@ -62,10 +62,10 @@ export const getAntdTokens = (mode: "light" | "dark") => {
 		colorTextLabel: isDark ? "#ffffff" : themeMode.colors.neutral,
 		colorTextTertiary: isDark ? "#ffffff" : themeMode.colors.neutral,
 		colorTextQuaternary: isDark ? "#ffffff" : themeMode.colors.neutral,
-		colorBgBase: themeMode.colors.background,
-		colorBgLayout: themeMode.colors.background,
-		colorBgContainer: themeMode.colors.surface,
-		colorBgElevated: themeMode.colors.surface,
+		colorBgBase: themeMode.colors.surface,
+		colorBgLayout: themeMode.colors.surface,
+		colorBgContainer: themeMode.colors.background,
+		colorBgElevated: themeMode.colors.background,
 		colorBorder: "rgba(0,0,0,0)",
 		colorBorderSecondary: isDark
 			? "rgba(255, 255, 255, 0.25)"
@@ -73,7 +73,7 @@ export const getAntdTokens = (mode: "light" | "dark") => {
 		colorError: "#F43F5E",
 		colorWarning: "#F59E0B",
 		fontFamily: themeMode.fonts.body,
-		borderRadius: 0,
+		borderRadius: 5,
 		lineHeight: 1.5,
 		boxShadow: isDark
 			? "0 8px 24px rgba(0, 0, 0, 0.5)"

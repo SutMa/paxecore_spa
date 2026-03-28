@@ -1,6 +1,6 @@
 import { Typography } from "antd";
 
-const DirectoryHeader = () => {
+const UserDirectoryHeader = () => {
 	return (
 		<div>
 			<Typography.Title level={2}>Directory</Typography.Title>
@@ -11,4 +11,4 @@ const DirectoryHeader = () => {
 	);
 };
 
-export default DirectoryHeader;
+export default UserDirectoryHeader;

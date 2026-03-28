@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Table, Pagination, theme as antdTheme } from "antd";
-import { useQuery } from "@tanstack/react-query";
+import type { UseQueryResult } from "@tanstack/react-query";
 import type { ColumnsType, TableProps } from "antd/es/table";
-import api from "../lib/api";
 
-interface PaginatedResponse<T> {
+export interface PaginatedResponse<T> {
 	data: T[];
 	total: number;
 	page: number;
@@ -12,16 +11,15 @@ interface PaginatedResponse<T> {
 }
 
 interface PXTableProps<T extends object> {
-	/** Unique key for TanStack Query caching */
-	queryKey: string;
-	/** POST endpoint path, e.g. "/users/search" */
-	endpoint: string;
+	/** A React Query hook that accepts (page, pageSize) and returns a UseQueryResult */
+	useQuery: (
+		page: number,
+		pageSize: number,
+	) => UseQueryResult<PaginatedResponse<T>>;
 	/** AntD column definitions */
 	columns: ColumnsType<T>;
 	/** Row key field name (default: "id") */
 	rowKey?: string | ((record: T) => string);
-	/** Extra body params to send with every request (filters, search, sort, etc.) */
-	body?: Record<string, unknown>;
 	/** Initial page size (default: 10) */
 	defaultPageSize?: number;
 	/** Any additional AntD Table props */
@@ -33,11 +31,9 @@ interface PXTableProps<T extends object> {
 }
 
 export default function PXTable<T extends object>({
-	queryKey,
-	endpoint,
+	useQuery: useQueryHook,
 	columns,
 	rowKey = "id",
-	body = {},
 	defaultPageSize = 10,
 	tableProps,
 	size = "medium",
@@ -46,17 +42,7 @@ export default function PXTable<T extends object>({
 	const [pageSize, setPageSize] = useState(defaultPageSize);
 	const { token } = antdTheme.useToken();
 
-	const { data, isLoading } = useQuery<PaginatedResponse<T>>({
-		queryKey: [queryKey, page, pageSize, body],
-		queryFn: async () => {
-			const res = await api.post<PaginatedResponse<T>>(endpoint, {
-				page,
-				pageSize,
-				...body,
-			});
-			return res.data;
-		},
-	});
+	const { data, isLoading } = useQueryHook(page, pageSize);
 
 	return (
 		<div

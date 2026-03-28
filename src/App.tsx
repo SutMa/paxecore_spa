@@ -13,12 +13,13 @@ import { appTheme, getAntdTokens } from "./theme";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import MainLayout from "./components/MainLayout";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./directoryEntities/user/UserDashboard";
 import { useSession } from "./hooks/useSession";
 import "./App.css";
 import { useAuth } from "@clerk/clerk-react";
 import { attachApiHeaders } from "./lib/api";
 import Directory from "./pages/Directory";
+import UserDirectoryPage from "./pages/UserDirectoryPage";
 
 function SessionGate({ children }: { children: React.ReactNode }) {
 	const { isLoading, isError, data } = useSession();
@@ -68,7 +69,10 @@ function AppRoutes({
 				>
 					<Route index element={<Dashboard />} />
 
-					<Route path="directory" element={<Directory />} />
+					<Route path="directory">
+						<Route index element={<Directory />} />
+						<Route path="users" element={<UserDirectoryPage />} />
+					</Route>
 					<Route path="upload" element={<Dashboard />} />
 					<Route path="explorer" element={<Dashboard />} />
 					<Route path="routing" element={<Dashboard />} />

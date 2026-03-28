@@ -1,5 +1,6 @@
 import type { ColumnsType } from "antd/es/table";
-import PXTable from "../components/PXTable";
+import PXTable from "../../components/PXTable";
+import { useUsersSearch } from "../../services/userServices/useUsersSearch";
 
 interface User {
 	id: string;
@@ -33,11 +34,10 @@ const columns: ColumnsType<User> = [
 	},
 ];
 
-export default function DirectoryBody() {
+export default function UserDirectoryTable() {
 	return (
 		<PXTable
-			queryKey="users"
-			endpoint="api/users/search"
+			useQuery={useUsersSearch}
 			columns={columns}
 			size="small"
 			tableProps={{ bordered: false }}

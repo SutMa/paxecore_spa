@@ -93,7 +93,10 @@ export default function Sidebar({
 			<Menu
 				theme={themeValues.colors.background === "#ffffff" ? "light" : "dark"}
 				mode="inline"
-				selectedKeys={[location.pathname]}
+				selectedKeys={[
+					navItems.find((item) => location.pathname.startsWith(item.key) && item.key !== "/")?.key
+						?? (location.pathname === "/" ? "/" : ""),
+				]}
 				items={navItems}
 				onClick={({ key }) => navigate(key)}
 				style={{

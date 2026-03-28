@@ -1,5 +1,4 @@
-import DirectoryBody from "../directoryEntities/DirectoryBody";
-import DirectoryHeader from "../directoryEntities/DirectoryHeader";
+import UserCard from "../directoryEntities/infoCards/UserStatsCard";
 
 const Directory = () => {
 	return (
@@ -8,14 +7,7 @@ const Directory = () => {
 				height: "100%",
 			}}
 		>
-			<DirectoryHeader />
-			<div
-				style={{
-					height: "95%",
-				}}
-			>
-				<DirectoryBody />
-			</div>
+			<UserCard />
 		</div>
 	);
 };
