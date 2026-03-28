@@ -1,8 +1,8 @@
 import { Layout, Menu } from "antd";
 
 import { useNavigate, useLocation } from "react-router-dom";
-import { appTheme } from "../theme";
-import PaxecoreIcon from "./PaxecoreIcon";
+import { appTheme } from "../../theme";
+import PaxecoreIcon from "../PaxecoreIcon";
 import { LayoutDashboard } from "lucide-react";
 import { Users } from "lucide-react";
 import { FolderOpen } from "lucide-react";
@@ -94,8 +94,10 @@ export default function Sidebar({
 				theme={themeValues.colors.background === "#ffffff" ? "light" : "dark"}
 				mode="inline"
 				selectedKeys={[
-					navItems.find((item) => location.pathname.startsWith(item.key) && item.key !== "/")?.key
-						?? (location.pathname === "/" ? "/" : ""),
+					navItems.find(
+						(item) =>
+							location.pathname.startsWith(item.key) && item.key !== "/",
+					)?.key ?? (location.pathname === "/" ? "/" : ""),
 				]}
 				items={navItems}
 				onClick={({ key }) => navigate(key)}

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../../lib/api";
-import type { PaginatedResponse } from "../../components/PXTable";
+import type { PaginatedResponse } from "../../components/core/PXTable";
 
 interface User {
 	id: string;

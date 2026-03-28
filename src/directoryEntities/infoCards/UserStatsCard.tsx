@@ -1,7 +1,7 @@
 import { Typography, Spin, theme as antdTheme } from "antd";
 import { useUsersStats } from "../../services/userServices/useUsersStats";
 import { Users, UserCheck, UserX } from "lucide-react";
-import PXCard from "../../components/PXCard";
+import PXCard from "../../components/core/PXCard";
 
 const UserStatsCard = () => {
 	const { token } = antdTheme.useToken();
