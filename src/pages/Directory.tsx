@@ -7,7 +7,19 @@ const Directory = () => {
 				height: "100%",
 			}}
 		>
-			<UserCard />
+			<div
+				style={{
+					display: "flex",
+					gap: 16,
+					width: "100%",
+				}}
+			>
+				<UserCard />
+				<UserCard />
+				<UserCard />
+				<UserCard />
+				<UserCard />
+			</div>
 		</div>
 	);
 };

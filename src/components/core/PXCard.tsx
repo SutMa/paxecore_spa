@@ -32,16 +32,20 @@ export default function PXCard({
 				padding: "1.5rem",
 				borderRadius: token.borderRadius,
 				border: `1px solid ${token.colorBorderSecondary}`,
-				transition: "border-color 0.2s",
+				transition: "transform 0.2s, box-shadow 0.2s",
 				cursor: to ? "pointer" : "default",
 				width,
 				height,
 				...style,
 			}}
-			onMouseEnter={(e) => (e.currentTarget.style.borderColor = "transparent")}
-			onMouseLeave={(e) =>
-				(e.currentTarget.style.borderColor = token.colorBorderSecondary)
-			}
+			onMouseEnter={(e) => {
+				e.currentTarget.style.transform = "translateY(-2px)";
+				e.currentTarget.style.boxShadow = token.boxShadow;
+			}}
+			onMouseLeave={(e) => {
+				e.currentTarget.style.transform = "translateY(0)";
+				e.currentTarget.style.boxShadow = "none";
+			}}
 		>
 			{children}
 		</div>

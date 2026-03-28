@@ -1,10 +1,12 @@
-import { Typography, Spin, theme as antdTheme } from "antd";
+import { Typography, Spin, Button, Tooltip, theme as antdTheme } from "antd";
 import { useUsersStats } from "../../services/userServices/useUsersStats";
-import { Users, UserCheck, UserX } from "lucide-react";
+import { Users, UserCheck, UserX, UserPlus, Eye } from "lucide-react";
 import PXCard from "../../components/core/PXCard";
+import { useNavigate } from "react-router-dom";
 
 const UserStatsCard = () => {
 	const { token } = antdTheme.useToken();
+	const navigate = useNavigate();
 	const { data, isLoading } = useUsersStats();
 
 	if (isLoading) {
@@ -36,7 +38,39 @@ const UserStatsCard = () => {
 					gap: "1rem",
 				}}
 			>
-				<Typography.Title level={5}>User Statistics</Typography.Title>
+				<div
+					style={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "space-between",
+					}}
+				>
+					<Typography.Title level={5}>Users</Typography.Title>
+					<div style={{ display: "flex", gap: 4 }}>
+						<Tooltip title="Add New User">
+							<Button
+								size="middle"
+								icon={<UserPlus size={16} />}
+								style={{ minWidth: 40, height: 30 }}
+								onClick={(e) => {
+									e.stopPropagation();
+									navigate("/directory/users/new");
+								}}
+							/>
+						</Tooltip>
+						<Tooltip title="View All Users">
+							<Button
+								size="middle"
+								icon={<Eye size={16} />}
+								style={{ minWidth: 40, height: 30 }}
+								onClick={(e) => {
+									e.stopPropagation();
+									navigate("/directory/users");
+								}}
+							/>
+						</Tooltip>
+					</div>
+				</div>
 
 				<div
 					style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
