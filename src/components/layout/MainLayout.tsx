@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Layout, theme as antdTheme } from "antd";
-import Sidebar from "./Sidebar";
 import TopHeader from "./TopHeader";
+import Sidebar from "./Sidebar";
 
 const { Content } = Layout;
 

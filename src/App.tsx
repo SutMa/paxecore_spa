@@ -12,14 +12,13 @@ import { queryClient } from "./lib/queryClient";
 import { appTheme, getAntdTokens } from "./theme";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
-import MainLayout from "./components/MainLayout";
-import Dashboard from "./directoryEntities/user/UserDashboard";
 import { useSession } from "./hooks/useSession";
 import "./App.css";
 import { useAuth } from "@clerk/clerk-react";
 import { attachApiHeaders } from "./lib/api";
 import Directory from "./pages/Directory";
 import UserDirectoryPage from "./pages/UserDirectoryPage";
+import MainLayout from "./components/layout/MainLayout";
 
 function SessionGate({ children }: { children: React.ReactNode }) {
 	const { isLoading, isError, data } = useSession();
@@ -67,15 +66,15 @@ function AppRoutes({
 						</>
 					}
 				>
-					<Route index element={<Dashboard />} />
+					<Route index element={<Directory />} />
 
 					<Route path="directory">
 						<Route index element={<Directory />} />
 						<Route path="users" element={<UserDirectoryPage />} />
 					</Route>
-					<Route path="upload" element={<Dashboard />} />
-					<Route path="explorer" element={<Dashboard />} />
-					<Route path="routing" element={<Dashboard />} />
+					<Route path="upload" element={<Directory />} />
+					<Route path="explorer" element={<Directory />} />
+					<Route path="routing" element={<Directory />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>

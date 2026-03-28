@@ -12,8 +12,8 @@ import {
 	MoonOutlined,
 } from "@ant-design/icons";
 import { User } from "lucide-react";
-import { useAuthStore } from "../stores/authStore";
-import { appTheme } from "../theme";
+import { useAuthStore } from "../../stores/authStore";
+import { appTheme } from "../../theme";
 
 const { Header } = Layout;
 

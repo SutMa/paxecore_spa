@@ -51,7 +51,7 @@ export default function PXTable<T extends object>({
 				flexDirection: "column",
 				height: "100%",
 				border: `1px solid ${token.colorBorderSecondary}`,
-				borderRadius: 0,
+				borderRadius: token.borderRadius,
 				overflow: "hidden",
 			}}
 		>
