@@ -73,6 +73,7 @@ export const getAntdTokens = (mode: "light" | "dark") => {
 		colorError: "#F43F5E",
 		colorWarning: "#F59E0B",
 		fontFamily: themeMode.fonts.body,
+		fontSize: 13,
 		borderRadius: 5,
 		lineHeight: 1.5,
 		boxShadow: isDark

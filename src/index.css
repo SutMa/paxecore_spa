@@ -1,3 +1,7 @@
+html {
+	font-size: 90%;
+}
+
 :root {
 	--primary-100: #007bff;
 	--primary-200: #0056b3;
